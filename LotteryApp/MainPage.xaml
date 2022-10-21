@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="LotteryApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LotteryApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid RequestedTheme="Default">
+        <Button Content="Exit Application" Margin="540,386,0,0" VerticalAlignment="Top" Width="201"/>
+        <TextBox HorizontalAlignment="Left" Margin="236,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="505" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Button" Margin="236,386,0,0" VerticalAlignment="Top" Width="237"/>
+        <TextBox HorizontalAlignment="Left" Margin="236,208,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="505" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Margin="236,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62" TextChanged="TextBox_TextChanged" Height="62"/>
+        <TextBox HorizontalAlignment="Left" Margin="324,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62" TextChanged="TextBox_TextChanged" Height="62"/>
+        <TextBox HorizontalAlignment="Left" Margin="411,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62" TextChanged="TextBox_TextChanged" Height="62"/>
+        <TextBox HorizontalAlignment="Left" Margin="498,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62" TextChanged="TextBox_TextChanged" Height="62"/>
+        <TextBox HorizontalAlignment="Left" Margin="588,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62" TextChanged="TextBox_TextChanged" Height="62"/>
+        <TextBox HorizontalAlignment="Left" Margin="678,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62" TextChanged="TextBox_TextChanged" Height="62"/>
+        <TextBlock HorizontalAlignment="Left" Margin="127,153,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="127,215,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="127,298,0,0" TextWrapping="Wrap" Text="Ball Numbers" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
