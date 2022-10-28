@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,9 +28,23 @@ namespace LotteryApp
             this.InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void CreateTicket(object sender, RoutedEventArgs e)
         {
+            Ticket thisTicket = new Ticket();
+            thisTicket.Name = NameText.Text;
+            thisTicket.Phone = PhoneText.Text;
+
+            thisTicket.balls.Add( Ball1.Text );
+            thisTicket.balls.Add( Ball2.Text );
+            thisTicket.balls.Add( Ball3.Text );
+            thisTicket.balls.Add( Ball4.Text );
+            thisTicket.balls.Add( Ball5.Text );
+            thisTicket.balls.Add( Ball6.Text );
+
+            var msg = new MessageDialog("Ticket Created", thisTicket.ToString()).ShowAsync();   
 
         }
+        
     }
 }
