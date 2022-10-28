@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -31,20 +33,46 @@ namespace LotteryApp
 
         private void CreateTicket(object sender, RoutedEventArgs e)
         {
-            Ticket thisTicket = new Ticket();
-            thisTicket.Name = NameText.Text;
-            thisTicket.Phone = PhoneText.Text;
+            try
+            {
 
-            thisTicket.balls.Add( Ball1.Text );
-            thisTicket.balls.Add( Ball2.Text );
-            thisTicket.balls.Add( Ball3.Text );
-            thisTicket.balls.Add( Ball4.Text );
-            thisTicket.balls.Add( Ball5.Text );
-            thisTicket.balls.Add( Ball6.Text );
+                Ticket thisTicket = new Ticket();
+                
 
-            var msg = new MessageDialog("Ticket Created", thisTicket.ToString()).ShowAsync();   
+                thisTicket.Name = NameText.Text;
+                thisTicket.Phone = PhoneText.Text;
 
+                ArrayList ballList = new ArrayList();
+                ballList.Add(Ball1.Text);
+                ballList.Add(Ball2.Text);
+                ballList.Add(Ball3.Text);
+                ballList.Add(Ball4.Text);
+                ballList.Add(Ball5.Text);
+                ballList.Add(Ball6.Text);
+
+                thisTicket.balls = ballList;
+
+                var msg = new MessageDialog("Ticket Created", thisTicket.ToString()).ShowAsync();
+
+            }
+            catch (Exception ex)
+            { var msg = new MessageDialog("Error!", ex.Message).ShowAsync(); }
         }
-        
+
+        private void LuckyDip(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Ticket ticket = new Ticket();
+                ticket.Name = NameText.Text;
+                ticket.Phone = PhoneText.Text;
+                ticket.LuckyDipGenerator();
+                var msg = new MessageDialog("Lucky Dip Created!", ticket.ToString()).ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                var msg = new MessageDialog("Error", ex.Message).ShowAsync();
+            }
+        }
     }
 }

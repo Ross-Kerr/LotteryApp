@@ -29,6 +29,7 @@
                 <TextBox x:Name="Ball4" FontSize="16" Width="40"/>
                 <TextBox x:Name="Ball5" FontSize="16" Width="40"/>
                 <TextBox x:Name="Ball6" FontSize="16" Width="40"/>
+                <Button Content="Lucky Dip" Click="LuckyDip"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Padding="20">
