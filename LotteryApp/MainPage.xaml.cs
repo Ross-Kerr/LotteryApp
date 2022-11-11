@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -25,6 +26,9 @@ namespace LotteryApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        ArrayList tickets = new ArrayList();
+        ObservableCollection<String> ticketlist = new ObservableCollection<String>();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -52,6 +56,11 @@ namespace LotteryApp
 
                 thisTicket.balls = ballList;
 
+                //add to arraylist
+                tickets.Add(thisTicket);
+                ticketlist.Add(thisTicket.ToString());
+
+
                 var msg = new MessageDialog("Ticket Created", thisTicket.ToString()).ShowAsync();
 
             }
@@ -68,10 +77,33 @@ namespace LotteryApp
                 ticket.Phone = PhoneText.Text;
                 ticket.LuckyDipGenerator();
                 var msg = new MessageDialog("Lucky Dip Created!", ticket.ToString()).ShowAsync();
+                tickets.Add(ticket);
+                ticketlist.Add(ticket.ToString());
             }
             catch (Exception ex)
             {
                 var msg = new MessageDialog("Error", ex.Message).ShowAsync();
+            }
+        }
+
+        private void ticketlistview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView listView = sender as ListView;
+            currenttickettext.Text = tickets[listView.SelectedIndex].ToString();
+        }
+
+        private void SearchButton(object sender, RoutedEventArgs e)
+        {
+            Ticket ticket = new Ticket();
+            for (int i = 0; i < tickets.Count; i++)
+            {
+                ticket = (Ticket)tickets[i];
+                if (searchtext.Text.Equals(ticket.Phone))
+                {
+                    var msg = new MessageDialog("Found", ticket.Phone).ShowAsync();
+                    ticketlistview.SelectedIndex = i;
+                    ticketlistview.ScrollIntoView(ticketlist[i]);
+                }
             }
         }
     }

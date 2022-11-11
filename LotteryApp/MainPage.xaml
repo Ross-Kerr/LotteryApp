@@ -9,7 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="550"/>
+            <ColumnDefinition Width ="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
             <StackPanel Orientation="Horizontal" Padding="20">
                 <TextBlock Text="Name:" FontSize="20" Width="200"/>
                 <TextBox x:Name="NameText" FontSize="20" Width="200"/>
@@ -35,6 +39,37 @@
             <StackPanel Orientation="Horizontal" Padding="20">
                 <Button Content="Create Ticket" Click="CreateTicket" Margin="200, 0, 0, 0"></Button>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Padding="20">
+                <TextBlock x:Name="currenttickettext" Text="currentTicket" FontSize="20" Padding="20" Foreground="White" SelectionChanged="currenttickettext_SelectionChanged"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="searchtext" Width="250" Margin="350, 50, 0, 0"/>
+            <Button Click="SearchButton" Content="Search" Margin="0, 50, 0, 0"/>
+            </StackPanel>
+            
+
+            <ListView x:Name="ticketlistview" Height="300" Width="200" Background="Wheat"
+                      Margin=" 0, 50, 0,0" Header="Tickets" Foreground="White"
+                      ItemsSource="{x:Bind ticketlist}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{x:Bind}" FontSize="16" Foreground="White"
+                                   Margin="10" Padding="5"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="CornerRadius" Value="5"/>
+                        <Setter Property="Margin" Value="10"/>
+
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </StackPanel>
 
     </Grid>
