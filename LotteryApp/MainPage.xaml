@@ -7,62 +7,68 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+   
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/pimp-pimpin.gif"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="550"/>
             <ColumnDefinition Width ="550"/>
             <ColumnDefinition Width ="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0">
             <StackPanel Orientation="Horizontal" Padding="20">
-                <TextBlock Text="Name:" FontSize="20" Width="200"/>
-                <TextBox x:Name="NameText" FontSize="20" Width="200"/>
+                <TextBlock Text="Name:" FontSize="20" Width="200" Foreground="black" />
+                <TextBox x:Name="NameText" FontSize="20" Width="200" Foreground="black" BorderBrush="Black"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Padding="20">
-                <TextBlock Text="Phone:" FontSize="20" Width="200" />
-                <TextBox x:Name="PhoneText" FontSize="20" Width="200"/>
+                <TextBlock Text="Phone:" FontSize="20" Width="200" Foreground="black" />
+                <TextBox x:Name="PhoneText" FontSize="20" Width="200" Foreground="black" BorderBrush="Black"/>
             </StackPanel>
 
 
             <StackPanel Orientation="Horizontal" Padding="20">
-                <TextBlock Text="Numbers:" FontSize="20" Width="200"/>
-                <TextBox x:Name="Ball1" FontSize="16" Width="40"/>
-                <TextBox x:Name="Ball2" FontSize="16" Width="40"/>
-                <TextBox x:Name="Ball3" FontSize="16" Width="40"/>
-                <TextBox x:Name="Ball4" FontSize="16" Width="40"/>
-                <TextBox x:Name="Ball5" FontSize="16" Width="40"/>
-                <TextBox x:Name="Ball6" FontSize="16" Width="40"/>
-                <Button Content="Lucky Dip" Click="LuckyDip"/>
+                <TextBlock Text="Numbers:" FontSize="20" Width="200" Foreground="black" />
+                <TextBox x:Name="Ball1" FontSize="16" Width="40" Foreground="black" BorderBrush="Black"/>
+                <TextBox x:Name="Ball2" FontSize="16" Width="40" Foreground="black" BorderBrush="Black"/>
+                <TextBox x:Name="Ball3" FontSize="16" Width="40" Foreground="black" BorderBrush="Black"/>
+                <TextBox x:Name="Ball4" FontSize="16" Width="40" Foreground="black" BorderBrush="Black"/>
+                <TextBox x:Name="Ball5" FontSize="16" Width="40" Foreground="black" BorderBrush="Black"/>
+                <TextBox x:Name="Ball6" FontSize="16" Width="40" Foreground="black" BorderBrush="Black"/>
+                <Button Content="Lucky Dip" Click="LuckyDip" Foreground="black" BorderBrush="Black"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Padding="20">
-                <Button Content="Create Ticket" Click="CreateTicket" Margin="200, 0, 0, 0"></Button>
+                <Button Content="Create Ticket" Click="CreateTicket" Margin="200, 0, 0, 0" Foreground="black" BorderBrush="Black"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Padding="20">
-                <TextBlock x:Name="currenttickettext" Text="currentTicket" FontSize="20" Padding="20" Foreground="White" SelectionChanged="currenttickettext_SelectionChanged"/>
+                <TextBlock x:Name="currenttickettext" Text="currentTicket" FontSize="20" Padding="20" Foreground="Black"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="searchtext" Width="250" Margin="350, 50, 0, 0"/>
-            <Button Click="SearchButton" Content="Search" Margin="0, 50, 0, 0"/>
+            <TextBox x:Name="searchtext" Width="400" Margin="75, 50, 0, 0" Foreground="Black" BorderBrush="Black"/>
+            <Button Click="SearchButton" Content="Search" Margin="0, 50, 0, 0" Foreground="Black" BorderBrush="Black"/>
             </StackPanel>
             
 
-            <ListView x:Name="ticketlistview" Height="300" Width="200" Background="Wheat"
-                      Margin=" 0, 50, 0,0" Header="Tickets" Foreground="White"
-                      ItemsSource="{x:Bind ticketlist}">
+            <ListView x:Name="ticketlistview" Height="300" Width="400" Background="White"
+                      Margin=" 0, 250, 0,0" Header="Tickets" Foreground="black"
+                      ItemsSource="{x:Bind ticketlist}" SelectionChanged="ticketlistview_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
-                        <TextBlock Text="{x:Bind}" FontSize="16" Foreground="White"
+                        <TextBlock Text="{x:Bind}" FontSize="16" Foreground="Black"
                                    Margin="10" Padding="5"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
                         <Setter Property="BorderThickness" Value="2"/>
                         <Setter Property="CornerRadius" Value="5"/>
                         <Setter Property="Margin" Value="10"/>
@@ -70,6 +76,74 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
+        </StackPanel>
+        <!--Coumn 3-->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="2">
+            <Button Content="Make Draw" Click="createNewDraw" Margin="50, 20, 0, 0" Foreground="Black" BorderBrush="Black"></Button>
+
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5">
+                    <TextBlock x:Name ="drawball1text" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5">
+                    <TextBlock x:Name ="drawball2text" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5">
+                    <TextBlock x:Name ="drawball3text" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5">
+                    <TextBlock x:Name ="drawball4text" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5">
+                    <TextBlock x:Name ="drawball5text" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5">
+                    <TextBlock x:Name ="drawball6text" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Border CornerRadius="50" Width="60" Height="60" BorderBrush="black" BorderThickness="1" Margin="5" Background="Gold">
+                    <TextBlock x:Name ="bonusballtext" FontSize="20" Foreground="black" Text="?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <ListView x:Name="winninglistview" Height="200" Width="300" Background="White"
+                        Margin="20,0,0,0" Header="Winning Tickets" Foreground="Black"
+                        ItemsSource="{x:Bind ticketListsforListView}" SelectionChanged="ticketlitview_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{x:Bind}" FontSize="16" Foreground="Black"
+                                   Margin="10" Padding="5"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="CornerRadius" Value="5"/>
+                        <Setter Property="Margin" Value="10"/>
+
+                    </Style>
+                </ListView.ItemContainerStyle>
+                </ListView>
+            </StackPanel>
+            
+            
+                
+         
+            
+            
+           
+            
         </StackPanel>
 
     </Grid>
