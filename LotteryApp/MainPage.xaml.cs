@@ -34,10 +34,17 @@ namespace LotteryApp
 
         LottoDraw NewDraw;
 
+        LottoFiles filesfunctions = new LottoFiles();
+
 
         public MainPage()
         {
             this.InitializeComponent();
+            tickets = filesfunctions.readTicketsFromFile();
+            foreach(Ticket t in tickets)
+            {
+                ticketlist.Add(t.ToString());
+            }
         }
 
 
@@ -176,6 +183,11 @@ namespace LotteryApp
             }
         }
 
-        
+        private void exitProgram(object sender, RoutedEventArgs e)
+        {
+            filesfunctions.writeTickets(tickets);
+            Application.Current.Exit();
+
+        }
     }
 }

@@ -116,9 +116,9 @@
                 </Border>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                <ListView x:Name="winninglistview" Height="200" Width="300" Background="White"
+                <ListView x:Name="winninglistview" Height="250" Width="300" Background="White"
                         Margin="20,0,0,0" Header="Winning Tickets" Foreground="Black"
-                        ItemsSource="{x:Bind ticketListsforListView}" SelectionChanged="ticketlitview_SelectionChanged">
+                        ItemsSource="{x:Bind myWinningTicketList}" SelectionChanged="ticketlistview_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <TextBlock Text="{x:Bind}" FontSize="16" Foreground="Black"
@@ -136,6 +136,7 @@
                 </ListView.ItemContainerStyle>
                 </ListView>
             </StackPanel>
+            <Button x:Name="exitButton" Click="exitProgram"   Content ="Exit Button" HorizontalAlignment="Right"></Button>
             
             
                 
